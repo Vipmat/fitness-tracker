@@ -1,9 +1,3 @@
-#container {
-  display: flex;
-}
-
-.child {
-  width: 200px;
-  height: 200px;
-  background-color: red;
+mat-form-field {
+  width: 300px;
 }
