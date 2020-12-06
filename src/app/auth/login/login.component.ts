@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
 import { UiService } from 'src/app/shared/ui.service';
 import { AuthService } from '../auth.service';
-import * as fromApp from '../../app.reducer';
+import * as fromRoot from '../../app.reducer';
 
 @Component({
   selector: 'app-login',
@@ -21,11 +20,11 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private uiService: UiService,
-    private store: Store<{ ui: fromApp.State }>
+    private store: Store<fromRoot.State>
   ) {}
 
   ngOnInit(): void {
-    this.isLoading$ = this.store.pipe(map((state) => state.ui.isLoading));
+    this.isLoading$ = this.store.select(fromRoot.getIsLoading);
     // this.loadingSubs = this.uiService.loadingStateChanged.subscribe(
     //   (isLoading) => {
     //     this.isLoading = isLoading;
