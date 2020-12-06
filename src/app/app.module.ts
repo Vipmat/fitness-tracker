@@ -13,8 +13,8 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 import { AuthService } from './auth/auth.service';
 import { environment } from '../environments/environment';
 import { AuthModule } from './auth/auth.module';
-import { TrainingModule } from './training/training.module';
 import { SharedModule } from './shared/shared.module';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -31,8 +31,8 @@ import { SharedModule } from './shared/shared.module';
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AuthModule,
-    TrainingModule,
     SharedModule,
+    AngularFirestoreModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
