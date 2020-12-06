@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Observable, Subscription } from 'rxjs';
-
+import { Observable } from 'rxjs';
 
 import { Store } from '@ngrx/store';
 
@@ -20,9 +19,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-
-    private uiService: UiService,
-
     private store: Store<fromRoot.State>
   ) {}
 
