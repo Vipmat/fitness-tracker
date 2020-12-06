@@ -4,6 +4,12 @@ import { Subject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
+
+import { UiService } from '../shared/ui.service';
+import * as UI from '../shared/ui.actions';
+import * as fromRoot from '../app.reducer';
+
+
 import { UiService } from '../shared/ui.service';
 import { Exercise } from './exercise.model';
 import * as UI from '../shared/ui.actions';
