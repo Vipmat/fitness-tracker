@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Subject, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { take } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
@@ -15,13 +15,7 @@ import * as fromTraining from './training.reducer';
   providedIn: 'root',
 })
 export class TrainingService {
-  exerciseChanged = new Subject<Exercise>();
-  exercisesChanged = new Subject<Exercise[]>();
-  finishedExercisesChanged = new Subject<Exercise[]>();
-  private availableExercises: Exercise[] = [];
   private fbSubs: Subscription[] = [];
-
-  private runningExercise: Exercise;
 
   constructor(
     private db: AngularFirestore,
@@ -59,7 +53,6 @@ export class TrainingService {
               null,
               3000
             );
-            this.exercisesChanged.next(null);
           }
         )
     );
@@ -100,7 +93,7 @@ export class TrainingService {
           duration: ex.duration * (progress / 100),
           calories: ex.duration * (progress / 100),
           date: new Date(),
-          state: 'completed',
+          state: 'cancelled',
         });
         this.store.dispatch(new Training.StopTraining());
       });
